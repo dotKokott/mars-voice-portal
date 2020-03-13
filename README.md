@@ -3,7 +3,13 @@ Voice / (maybe) Video installation for Mars TV portal @brahman.ai!
 
 ## TODO
 
-* Two pages -> TV Page, Phone/Recording page
+#### Screen page
 
+* Receive recorded video
+* Play recorded video
 
+#### Phone Page
+
+* Record video + sound on touch/click hold & display.
+* Send recorded video to screen
 

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch_screen": "watchify public/js/screen.js -o public/bundled/screen_bundle.js --debug -v",
     "watch_phone": "watchify public/js/phone.js -o public/bundled/phone_bundle.js --debug -v",
-    "start": "node server.js"    
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/dotKokott/mars-voice-portal/issues"
   },
-  "homepage": "https://github.com/dotKokott/mars-voice-portal#readme"
+  "homepage": "https://github.com/dotKokott/mars-voice-portal#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }

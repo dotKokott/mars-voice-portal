@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "watchify public/js/main.js -o public/bundled/main_bundle.js --debug -v",
+    "watch_screen": "watchify public/js/screen.js -o public/bundled/screen_bundle.js --debug -v",
+    "watch_phone": "watchify public/js/phone.js -o public/bundled/phone_bundle.js --debug -v",
     "start": "node server.js"    
   },
   "repository": {

@@ -3,5 +3,7 @@ Voice / (maybe) Video installation for Mars TV portal @brahman.ai!
 
 ## TODO
 
-* Create git repository
+* Two pages -> TV Page, Phone/Recording page
+
+
 

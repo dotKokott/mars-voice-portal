@@ -1,0 +1,22 @@
+{
+  "name": "mars-voice-portal",
+  "version": "1.0.0",
+  "description": "Voice / (maybe) Video installation for Mars TV portal @brahman.ai!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify public/js/main.js -o public/bundled/main_bundle.js --debug -v",
+    "start": "node server.js"    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotKokott/mars-voice-portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dotKokott/mars-voice-portal/issues"
+  },
+  "homepage": "https://github.com/dotKokott/mars-voice-portal#readme"
+}

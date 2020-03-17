@@ -8,6 +8,8 @@ let rtc;
 
 navigator.mediaDevices.getUserMedia(mediaConstraints).then((result) => { userStream = result })
 
+var socket = io();
+
 var videoPreview = $('#video_preview')[0];
 
 function init() {
@@ -16,6 +18,7 @@ function init() {
 
 function startRecording() {
     var options = {
+        recorderType: recordrtc.StereoAudioRecorder,
         mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
         audioBitsPerSecond: 128000,
         videoBitsPerSecond: 128000,
@@ -28,10 +31,17 @@ function startRecording() {
 
 function stopRecording() {
     rtc.stopRecording((blobUrl) => {
-        videoPreview.src = blobUrl;
-        videoPreview.play();
 
+        
+        //console.log(blobUrl.audio);
 
+        rtc.getDataURL((dataURL) => {
+            videoPreview.src = dataURL;
+            videoPreview.play();
+
+            socket.emit('sendVideo', {screenID: 1, video: dataURL });
+            console.log("Sent to server!");
+        })
 
         //var recordedBlob = recordRTC.getBlob();
         //recordRTC.getDataURL(function(dataURL) {

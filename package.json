@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/dotKokott/mars-voice-portal#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "jquery": "^3.4.1",
-    "recordrtc": "^5.5.9"
+    "recordrtc": "^5.5.9",
+    "socket.io": "^2.3.0"
   }
 }

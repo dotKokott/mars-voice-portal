@@ -7,14 +7,16 @@ Voice / (maybe) Video installation for Mars TV portal @brahman.ai!
 ** StereoAudioRecorder might work out the fastest so maybe no video?
 ** Should take a little bit of testing...
 
+#### Server
+
+* Locate screen position / layout array
+* Timer for sequence
+* Send play signal to screens
+
 #### Screen page
 
-//* Receive recorded video
-* Play recorded video
+* Play on command
 
 #### Phone Page
 
-//* Record video + sound on touch/click hold & display.
-* global server! One Video Manager (on glitch.. no local perhaps)
-* Send recorded video to screen
-
+* Add screen select? (based on ID easiest I guess)

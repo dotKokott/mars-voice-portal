@@ -5,6 +5,7 @@ const mediaConstraints = { video: true, audio: true };
 
 let userStream;
 let rtc;
+//let currentDataURL = undefined;
 
 navigator.mediaDevices.getUserMedia(mediaConstraints).then((result) => { userStream = result })
 
@@ -18,7 +19,7 @@ function init() {
 
 function startRecording() {
     var options = {
-        recorderType: recordrtc.StereoAudioRecorder,
+        //recorderType: recordrtc.StereoAudioRecorder,
         mimeType: 'video/webm', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
         audioBitsPerSecond: 128000,
         videoBitsPerSecond: 128000,
@@ -31,35 +32,38 @@ function startRecording() {
 
 function stopRecording() {
     rtc.stopRecording((blobUrl) => {
-
-        
-        //console.log(blobUrl.audio);
-
         rtc.getDataURL((dataURL) => {
             videoPreview.src = dataURL;
             videoPreview.play();
-
-            socket.emit('sendVideo', {screenID: 1, video: dataURL });
-            console.log("Sent to server!");
         })
-
-        //var recordedBlob = recordRTC.getBlob();
-        //recordRTC.getDataURL(function(dataURL) {
-        	//video1.src = dataURL;
-        	//console.log(video1);
-        	//video1.play();
-        //});
     });
+}
+
+function sendToScreen(screen) {
+    socket.emit('sendVideo', {screenID: screen, video: videoPreview.src });
+    console.log("Sent to server!");
 }
 
 $( document ).ready(() => {
     init();
 })
 
-$( document ).mousedown(() => {
+// $( document ).mousedown(() => {
+//     startRecording();
+// })
+
+// $( document ).mouseup(() => {
+//     stopRecording();
+// })
+
+$('#btnRecord').mousedown(() => {
     startRecording();
 })
 
-$( document ).mouseup(() => {
+$('#btnRecord').mouseup(() => {
     stopRecording();
+})
+
+$('#btnSend').click(() => {
+    sendToScreen(1);
 })

@@ -21,8 +21,6 @@ $(document).ready(() => {
     const x = vars['x'] || 0;
     const y = vars['y'] || 0;
 
-
-
     console.log('X=>' + x + '  Y=>' + y)
 
     socket.emit('registerScreen', { x: x, y: y });

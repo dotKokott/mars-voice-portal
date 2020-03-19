@@ -39,4 +39,22 @@ io.on('connection', (socket) => {
     // })
 });
 
+let tickInterval = 1000;
+let currentColumn = 0;
+
+function tick() {
+    var x = screenArray[currentColumn];
+
+    for(var y = 0; y < DIM_Y; y++) {
+        var screen = x[y];
+        if(screen !== undefined) {
+            screen.emit('playVideo', {})
+        }
+    }
+    
+}
+
+setInterval(tick, tickInterval);
+
+
 server.listen(port, () => console.log("Listening on port " + port));

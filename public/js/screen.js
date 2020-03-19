@@ -36,7 +36,7 @@ socket.on('receiveVideo', (data) => {
 socket.on('playVideo', (data) => {
     console.log("Received PLAY command!")
 
-    const delay = data.delay || 0;
+    //const delay = data.delay || 0;
 
     video.play();
 })

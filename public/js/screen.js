@@ -1,10 +1,31 @@
 const $ = require('jquery');
-var socket = io();
+const socket = io();
 
-var video = $('#video')[0];
+const video = $('#video')[0];
 
-$( document ).ready( () => {
-    socket.emit('registerScreen', { screenID: 1 });
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (
+        m,
+        key,
+        value
+    ) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+$(document).ready(() => {
+    const vars = getUrlVars()
+
+    const x = vars['x'] || 0;
+    const y = vars['y'] || 0;
+
+
+
+    console.log('X=>' + x + '  Y=>' + y)
+
+    socket.emit('registerScreen', { x: x, y: y });
 })
 
 socket.on('receiveVideo', (data) => {
@@ -17,7 +38,8 @@ socket.on('receiveVideo', (data) => {
 socket.on('playVideo', (data) => {
     console.log("Received PLAY command!")
 
-    var delay = time.delay || 0;
+    const delay = data.delay || 0;
 
     video.play();
 })
+

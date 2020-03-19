@@ -16,22 +16,27 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/phone.html');
 });
 
-var screens = {}
+// var screens = {}
+
+const DIM_X = 5
+const DIM_Y = 3
+
+const screenArray = Array.from(Array(DIM_X), () => new Array(DIM_Y))
 
 io.on('connection', (socket) => { 
     socket.on('registerScreen', data => {
-        screens[data.screenID] = socket;
+        screenArray[data.x][data.y] = socket
 
-        console.log("Registered screen: " + data.screenID);
+        console.log("Registered X:" + data.x + ' Y:' + data.y);
     })
 
     socket.on('sendVideo', (data) => {        
-        screens[data.screenID].emit('receiveVideo', { video: data.video });
+        screenArray[data.x][data.y].emit('receiveVideo', { video: data.video });
     })
 
-    socket.on('getAvailableScreens', (data) => {
-        socket.emit('receiveAvailableScreens', {ids: Object.keys(screens)})
-    })
+    // socket.on('getAvailableScreens', (data) => {
+    //     socket.emit('receiveAvailableScreens', {ids: Object.keys(screens)})
+    // })
 });
 
 server.listen(port, () => console.log("Listening on port " + port));

@@ -8,10 +8,17 @@
                 background-color: red; 
                 margin: 0; 
             }
+
+            * {
+                user-select: none;
+            }
         </style>
     </head> 
     <body>
         <video id='video_preview' loop></video>
+        <select name="screens" id="listScreens">
+            <option value="">--Please choose a screen--</option>
+        </select>
         <button id="btnRecord">Record (hold)</button>
         <button id="btnSend">Send to screen</button>
         <script src="/socket.io/socket.io.js"></script>

@@ -13,3 +13,11 @@ socket.on('receiveVideo', (data) => {
     video.src = data.video;
     video.play();
 });
+
+socket.on('playVideo', (data) => {
+    console.log("Received PLAY command!")
+
+    var delay = time.delay || 0;
+
+    video.play();
+})

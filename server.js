@@ -28,6 +28,10 @@ io.on('connection', (socket) => {
     socket.on('sendVideo', (data) => {        
         screens[data.screenID].emit('receiveVideo', { video: data.video });
     })
+
+    socket.on('getAvailableScreens', (data) => {
+        socket.emit('receiveAvailableScreens', {ids: Object.keys(screens)})
+    })
 });
 
 server.listen(port, () => console.log("Listening on port " + port));

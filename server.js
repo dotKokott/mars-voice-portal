@@ -31,6 +31,8 @@ io.on('connection', (socket) => {
     })
 
     socket.on('sendVideo', (data) => {        
+        console.log("SEND VIDEO COMMAND TO "+ data.x + ' ' + data.y)
+        //console.log("On server data: " + data.video);
         screenArray[data.x][data.y].emit('receiveVideo', { video: data.video });
     })
 
@@ -55,6 +57,5 @@ function tick() {
 }
 
 setInterval(tick, tickInterval);
-
 
 server.listen(port, () => console.log("Listening on port " + port));

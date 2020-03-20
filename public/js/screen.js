@@ -27,10 +27,9 @@ $(document).ready(() => {
 })
 
 socket.on('receiveVideo', (data) => {
-    console.log("Received video!");
-
+    console.log("Received video! " + data.video);
+    
     video.src = data.video;
-    video.play();
 });
 
 socket.on('playVideo', (data) => {

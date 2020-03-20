@@ -3,7 +3,8 @@
 * {
   margin: 0;
   border: 0;
-  padding: 0;
+  padding: 0;  
+  user-select: none;
 }
 
 #listScreens {
@@ -15,6 +16,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   height: 80vh;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
 
 label {

@@ -1,5 +1,6 @@
 const $ = require('jquery');
 const socket = io();
+const p5 = require('p5');
 
 const video = $('#video')[0];
 
@@ -26,16 +27,12 @@ $(document).ready(() => {
     socket.emit('registerScreen', { x: x, y: y });
 })
 
-socket.on('receiveVideo', (data) => {
-    console.log("Received video! " + data.video);
-    
+socket.on('receiveVideo', (data) => {    
     video.src = data.video;
 });
 
 socket.on('playVideo', (data) => {
     console.log("Received PLAY command!")
-
-    //const delay = data.delay || 0;
 
     video.play();
 })

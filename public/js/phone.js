@@ -35,11 +35,6 @@ socket.on('receiveAvailableScreens', data => {
     btnLabel.setAttribute('for', id);
     document.getElementById('listScreens').appendChild(btnInput);
     document.getElementById('listScreens').appendChild(btnLabel);
-    /*$('#listScreens').append(
-      $('<option></option>')
-        .val(item)
-        .html(item)
-    );*/
   }
 });
 
@@ -70,9 +65,11 @@ function stopRecording() {
     console.log('Stopped');
     rtc.getDataURL(dataURL => {
       currentDataURL = dataURL;
-      var selectedScreen = document.querySelector('input[name="screen"]:checked');
-      var x = selectedScreen.getAttribute('data-x');
-      var y = selectedScreen.getAttribute('data-y');
+      var selectedScreen = $('input[name="screen"]:checked+label');
+      
+      var x = selectedScreen.attr('data-x');
+      var y = selectedScreen.attr('data-y');
+
       sendToScreen(x, y);
     });
   });
@@ -81,7 +78,7 @@ function stopRecording() {
 function sendToScreen(x, y) {
   socket.emit('sendVideo', { x: x, y: y, video: currentDataURL });
 
-  location.reload();
+  //location.reload();
 }
 
 $(document).ready(() => {

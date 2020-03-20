@@ -1,16 +1,13 @@
-/** @format */
-
 const fs = require('fs');
 const express = require('express');
 const app = express();
-// const server = require('https').createServer(
-//   {
-//     key: fs.readFileSync('server.key'),
-//     cert: fs.readFileSync('server.cert')
-//   },
-//   app
-// );
-const server = require('http').createServer(app);
+const server = require('https').createServer(
+  {
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  },
+  app
+);
 
 const io = require('socket.io')(server);
 
@@ -39,8 +36,10 @@ io.on('connection', socket => {
   });
 
   socket.on('sendVideo', data => {
-    console.log('SEND VIDEO COMMAND TO ' + data.x + ' ' + data.y);
+    //console.log('SEND VIDEO COMMAND TO ' + data.x + ' ' + data.y);
     //console.log("On server data: " + data.video);
+    if(screenArray[data.x][data.y] === undefined) return
+    
     screenArray[data.x][data.y].emit('receiveVideo', { video: data.video });
   });
 

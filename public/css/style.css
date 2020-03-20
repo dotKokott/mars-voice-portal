@@ -1,0 +1,60 @@
+/** @format */
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+#listScreens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 80vh;
+}
+
+label {
+  display: inline-block;
+  background-color: blue;
+  box-sizing: border-box;
+  line-height: 0;
+  cursor: pointer;
+}
+
+label:after {
+  content: 'x: ' attr(data-x) ' y: ' attr(data-y);
+  display: block;
+  text-align: center;
+  line-height: 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+label:hover {
+  background-color: purple;
+}
+
+input[type='radio']:checked + label {
+  background-color: green;
+}
+
+video {
+  display: none;
+}
+
+button#btnRecord {
+  position: absolute;
+  bottom: 0;
+  height: 20vh;
+  width: 100%;
+  background-color: white;
+}

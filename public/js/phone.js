@@ -48,14 +48,14 @@ function stopRecording() {
         rtc.getDataURL((dataURL) => {
             currentDataURL = dataURL;
 
-            sendToScreen();
+            sendToScreen(0, 0);
         })
     });
 
 }
 
-function sendToScreen(screen) {
-    socket.emit('sendVideo', { x: 0, y:0 , video: currentDataURL });
+function sendToScreen(x, y) {
+    socket.emit('sendVideo', { x: x, y:y , video: currentDataURL });
     
     location.reload();
 }

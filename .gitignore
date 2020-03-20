@@ -105,3 +105,6 @@ dist
 
 # TernJS port file
 .tern-port
+public/bundled/phone_bundle.js
+public/.DS_Store
+package-lock.json

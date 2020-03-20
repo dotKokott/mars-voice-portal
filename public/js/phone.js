@@ -12,6 +12,7 @@ let currentDataURL;
 
 navigator.mediaDevices.getUserMedia(mediaConstraints).then(result => {
   userStream = result;
+});
 
 var socket = io();
 

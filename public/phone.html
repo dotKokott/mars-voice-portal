@@ -1,27 +1,31 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>!RECORDER!</title>
-        <style>
-            body { 
-                background-color: red; 
-                margin: 0; 
-            }
+  <head>
+    <meta charset="utf-8" />
+    <title>!RECORDER!</title>
+    <style>
+      body {
+        background-color: red;
+        margin: 0;
+      }
 
-            * {
-                user-select: none;
-            }
-        </style>
-    </head> 
-    <body>
-        <video id='video_preview' loop></video>
-        <select name="screens" id="listScreens">
-            <option value="">--Please choose a screen--</option>
-        </select>
-        <button id="btnRecord">Record (hold)</button>
-        <button id="btnSend">Send to screen</button>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src='/public/bundled/phone_bundle.js'></script>
-    </body>
+      * {
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video_preview" loop></video>
+    <div id="listScreens"></div>
+    <!--<select name="screens" id="listScreens">
+      <option value="">--Please choose a screen--</option>
+    </select>-->
+    <button id="btnRecord">Record (hold)</button>
+    <button id="btnSend">Send to screen</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/bundled/phone_bundle.js"></script>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </body>
 </html>

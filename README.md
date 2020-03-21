@@ -11,6 +11,8 @@ Start all 3 scripts defined in 'package.json' in seperate terminal windows.
 * Figure out what to do with safari/ios
 ______________________________________________________________
 
+* Come up with silly name
+* MAKE COOL VIZBISSCHNIZ
 * Clamp play time to sequencer tick time
 * Bug: Figure out click on start of play
 * Make phone UI nice

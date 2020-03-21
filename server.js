@@ -54,7 +54,7 @@ io.on('connection', socket => {
   });
 });
 
-let tickInterval = 1000;
+let tickInterval = 5000;
 let currentColumn = 0;
 
 function tick() {

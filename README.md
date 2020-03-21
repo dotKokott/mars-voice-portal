@@ -9,19 +9,13 @@ Start all 3 scripts defined in 'package.json' in seperate terminal windows.
 ## TODO
 
 * Figure out what to do with safari/ios
-** StereoAudioRecorder might work out the fastest so maybe no video?
-** Should take a little bit of testing...
+______________________________________________________________
 
-#### Server
+* Clamp play time to sequencer tick time
+* Bug: Figure out click on start of play
+* Make phone UI nice
 
-** Locate screen position / layout array
-* Timer for sequence
-* Send play signal to screens
 
-#### Screen page
+### Wishlist
+* Server restartable
 
-* Play on command
-
-#### Phone Page
-
-* Add screen select? (based on ID easiest I guess)

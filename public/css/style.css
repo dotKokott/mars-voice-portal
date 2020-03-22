@@ -96,7 +96,7 @@ video {
   height: 70%;
 }
 
-button#btnRecord {
+#btnRecord {
   padding: var(--base);
   box-sizing: border-box;
   bottom: 0;
@@ -112,13 +112,12 @@ button#btnRecord {
   font-size: 7vw;
   text-transform: uppercase;
   color: black;
-  opacity: 0.9;
   font-family: inherit;
-  //mix-blend-mode: exclusion;
   border: calc(var(--base) / 3) solid black;
+  z-index: 10000;
 }
 
-button#btnRecord.recording {
+#btnRecord.recording {
   animation-name: pulse;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;

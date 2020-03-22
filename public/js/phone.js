@@ -10,7 +10,7 @@ let rtc;
 
 let currentDataURL;
 
-let isRecording = false;
+let btnRecord;
 
 navigator.mediaDevices.getUserMedia(mediaConstraints).then(result => {
   userStream = result;
@@ -81,18 +81,23 @@ function sendToScreen(x, y) {
 
 $(document).ready(() => {
   init();
+  btnRecord = document.querySelector('#btnRecord');
 });
 
-$('#btnRecord').mousedown(() => {
-  startRecording();
-  document.querySelector('#btnRecord').classList.add('recording');
-  document.querySelector('#btnRecord').innerHTML = 'Recording';
-});
+var isRecording = false;
 
-$('#btnRecord').mouseup(() => {
-  stopRecording();
-  document.querySelector('#btnRecord').classList.remove('recording');
-  document.querySelector('#btnRecord').innerHTML = 'Record';
+$('#btnRecord').click(() => {
+  if (isRecording) {
+    stopRecording();
+    btnRecord.classList.remove('recording');
+    btnRecord.innerHTML = 'Record';
+    isRecording = false;
+  } else {
+    startRecording();
+    btnRecord.classList.add('recording');
+    btnRecord.innerHTML = 'Recording';
+    isRecording = true;
+  }
 });
 
 $('#btnSend').click(() => {

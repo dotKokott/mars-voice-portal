@@ -103,20 +103,26 @@ button#btnRecord {
   display: inline-block;
   height: calc(var(--base) * 20);
   margin: 0 auto;
-  xwidth: calc(var(--base) * 25);
   width: 100%;
   background-color: white;
   border-radius: 50%;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 6vw;
+  font-size: 7vw;
   text-transform: uppercase;
   color: black;
   opacity: 0.9;
   font-family: inherit;
   //mix-blend-mode: exclusion;
   border: calc(var(--base) / 3) solid black;
+}
+
+button#btnRecord.recording {
+  animation-name: pulse;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 @media (orientation: landscape) {
@@ -136,13 +142,6 @@ button#btnRecord {
     display: block;
     z-index: 9999;
   }
-}
-
-.recording {
-  animation-name: pulse;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }
 
 @keyframes pulse {

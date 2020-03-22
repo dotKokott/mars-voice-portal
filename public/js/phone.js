@@ -84,18 +84,16 @@ $(document).ready(() => {
 });
 
 $('#btnRecord').mousedown(() => {
-  if (isRecording) {
-    stopRecording();
-    isRecording = false;
-    document.querySelector('#btnRecord').classList.add('recording');
-  } else {
-    startRecording();
-    document.querySelector('#btnRecord').classList.remove('recording');
-    isRecording = true;
-  }
+  startRecording();
+  document.querySelector('#btnRecord').classList.add('recording');
+  document.querySelector('#btnRecord').innerHTML = 'Record';
 });
 
-$('#btnRecord').mouseup(() => {});
+$('#btnRecord').mouseup(() => {
+  stopRecording();
+  document.querySelector('#btnRecord').classList.remove('recording');
+  document.querySelector('#btnRecord').innerHTML = 'Recording';
+});
 
 $('#btnSend').click(() => {
   var screen = $('#listScreens').val();

@@ -3,12 +3,14 @@
 const $ = require('jquery');
 const recordrtc = require('recordrtc');
 
-const mediaConstraints = { video: true, audio: true };
+const mediaConstraints = { video: false, audio: true };
 
 let userStream;
 let rtc;
 
 let currentDataURL;
+
+let isRecording = false;
 
 navigator.mediaDevices.getUserMedia(mediaConstraints).then(result => {
   userStream = result;
@@ -38,14 +40,11 @@ socket.on('receiveAvailableScreens', data => {
   }
 });
 
-var videoPreview = $('#video_preview')[0];
-
 function init() {
   console.log('Initializing...');
   socket.emit('getAvailableScreens');
 }
 
-let firstTime = true;
 function startRecording() {
   var options = {
     recorderType: recordrtc.StereoAudioRecorder,
@@ -65,10 +64,10 @@ function stopRecording() {
     console.log('Stopped');
     rtc.getDataURL(dataURL => {
       currentDataURL = dataURL;
-      var selectedScreen = $('input[name="screen"]:checked+label');
-      
-      var x = selectedScreen.attr('data-x');
-      var y = selectedScreen.attr('data-y');
+
+      var selectedScreen = $('input[name="screen"]:checked+label')[0];
+      var x = selectedScreen.getAttribute('data-x');
+      var y = selectedScreen.getAttribute('data-y');
 
       sendToScreen(x, y);
     });
@@ -77,7 +76,6 @@ function stopRecording() {
 
 function sendToScreen(x, y) {
   socket.emit('sendVideo', { x: x, y: y, video: currentDataURL });
-
   //location.reload();
 }
 
@@ -85,42 +83,21 @@ $(document).ready(() => {
   init();
 });
 
-// $( document ).click(() => {
-//     console.log($('#listScreens').val())
-// })
-
 $('#btnRecord').mousedown(() => {
-  startRecording();
+  if (isRecording) {
+    stopRecording();
+    isRecording = false;
+    document.querySelector('#btnRecord').classList.add('recording');
+  } else {
+    startRecording();
+    document.querySelector('#btnRecord').classList.remove('recording');
+    isRecording = true;
+  }
 });
 
-$('#btnRecord').mouseup(() => {
-  stopRecording();
-});
-var recording = false;
-
-// $('#btnRecord').click(() => {
-//   if (!recording) {
-//     recording = true;
-//     startRecording();
-
-//     return;
-//   }
-
-//   if (recording) {
-//     recording = false;
-//     stopRecording();
-
-//     return;
-//   }
-// });
+$('#btnRecord').mouseup(() => {});
 
 $('#btnSend').click(() => {
   var screen = $('#listScreens').val();
-
-  // if (screen === '') {
-  //     alert('Please choose a screen!')
-  //     return
-  // }
-
   sendToScreen(parseInt(screen));
 });

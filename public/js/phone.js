@@ -86,13 +86,13 @@ $(document).ready(() => {
 $('#btnRecord').mousedown(() => {
   startRecording();
   document.querySelector('#btnRecord').classList.add('recording');
-  document.querySelector('#btnRecord').innerHTML = 'Record';
+  document.querySelector('#btnRecord').innerHTML = 'Recording';
 });
 
 $('#btnRecord').mouseup(() => {
   stopRecording();
   document.querySelector('#btnRecord').classList.remove('recording');
-  document.querySelector('#btnRecord').innerHTML = 'Recording';
+  document.querySelector('#btnRecord').innerHTML = 'Record';
 });
 
 $('#btnSend').click(() => {
